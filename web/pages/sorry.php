@@ -57,11 +57,11 @@ function graphIt() {
             window.index2 = -1;
 
         }
-        if (window.n == 0) {
+        if (window.n == 0 && window.currentPlayer == '<?php echo $username ?>') {
             window.index1 = i;
             ++window.n;
 	    document.getElementById(index1).setAttribute('style','border: 1px solid gold;');
-        } else if (window.n == 1) {
+        } else if (window.n == 1 && window.currentPlayer == '<?php echo $username ?>' ) {
             window.index2 = i;
             ++window.n;
 	    document.getElementById(index2).setAttribute('style','border: 1px solid gold;');
@@ -69,7 +69,7 @@ function graphIt() {
         var feedbackdisplay = document.getElementById('feedbackdebug');
         feedbackdisplay.innerHTML = index1 + ' ' + index2;
 
-        if (document.getElementById(index1).hasChildNodes() && index2 != -1) {
+        if (document.getElementById(index1).hasChildNodes() && index2 != -1  && window.currentPlayer == '<?php echo $username ?>') {
 	    document.getElementById(index1).setAttribute('style','border: 1px solid transparent;');
 	    document.getElementById(index2).setAttribute('style','border: 1px solid transparent;');
             validateMove(index1, index2);
@@ -92,7 +92,9 @@ function graphIt() {
 function validateMove(index1, index2) {
     var pieceID = document.getElementById(index1).firstChild.getAttribute("id");
     var valid = (document.getElementById('sorryApplet')).validateMove(pieceID, index1, index2);
-    (document.getElementById('sorryApplet')).computerTurn();
+    if(valid == true) { (document.getElementById('sorryApplet')).computerTurn();
+        
+    }
 }
 
 function movePiece(index1, index2) {
@@ -101,9 +103,10 @@ function movePiece(index1, index2) {
     moveTo.insertBefore(piece, moveTo.firstChild);
 }
 
-}
+
 
 function drawCard() {
+    if (window.currentPlayer == '<?php echo $username?>') {
     var discardpile = document.getElementById('discard');
     var card = document.getElementById('sorryApplet').drawCard();
     if (card == 1) {
@@ -130,7 +133,7 @@ function drawCard() {
         discardpile.innerHTML = '<div id="description">Must take one man from your start, place it on any square that is occupied by any opponent, and return that opponents man to its start. If there is no man on your start or no opponents man is on any square your move is forfeited.</div>' + "Sorry"
     }
 }
-
+}
 function changeCard(card) {
     var discardpile = document.getElementById('discard');
     if (card == 1) {
