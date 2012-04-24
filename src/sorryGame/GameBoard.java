@@ -271,7 +271,7 @@ public class GameBoard {
             case 3: case 5: case 8: case 10: case 12:
         		if (initialPosition2 != 0 || finalPosition2 != 0)
         			return false;
-                if (((finalPosition - initialPosition)%60 + 60)%60 == card)
+                if (initialPosition != -1 && ((finalPosition - initialPosition)%60 + 60)%60 == card)
                     return true;
                 else if ((((homePosition - initialPosition)%60 + 60)%60 + ((finalPosition - safetyZoneIndex)%(safetyZoneIndex+6)) + (safetyZoneIndex+6))%(safetyZoneIndex+6) + 1 == card)
             		return true;
