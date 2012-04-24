@@ -99,9 +99,6 @@
     <option name="USE_PROJECT_PROFILE" value="true" />
     <version value="1.0" />
   </component>
-  <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$/web/pages/Sorry!.html" libraries="{deployJava}" />
-  </component>
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />
     <option name="OPTION_SCOPE" value="protected" />
@@ -240,6 +237,7 @@
       </item>
     </group>
   </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="5.3.0" />
   <component name="ProjectCodeStyleSettingsManager">
     <option name="PER_PROJECT_SETTINGS">
       <value>
