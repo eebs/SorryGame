@@ -39,7 +39,7 @@ public class GameApplet extends Applet {
      *                  was an error.
      */
     @SuppressWarnings("UnusedDeclaration")
-    public void validateMove(String pieceID, String fromPosition, String toPosition) throws Exception {
+    public boolean validateMove(String pieceID, String fromPosition, String toPosition) throws Exception {
         if(fromPosition.equals("gstart") || fromPosition.equals("rstart") || fromPosition.equals("bstart") || fromPosition.equals("ystart"))
             fromPosition = "-1";
         else if (toPosition.equals("greenhome")) toPosition = "65";
@@ -56,8 +56,9 @@ public class GameApplet extends Applet {
             updatePositions(game.board.getRedHomeArray(), "r");
             updatePositions(game.board.getBlueHomeArray(), "b");
             updatePositions(game.board.getYellowHomeArray(), "y");
+            window.call("setCurrentPlayer", new Object[]{computerPlayer.getName()});
         }
-        window.call("setCurrentPlayer", new Object[]{computerPlayer.getName()});
+        return valid;
     }
 
     public boolean computerTurn() throws Exception {
