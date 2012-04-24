@@ -28,6 +28,13 @@ public class EasyComputerPlayer extends ComputerPlayer {
 							}
 							break;
 						case 11:
+							playerPawns = pawnMap.get(color);
+							destination = pawn.startIndex;
+							for(Pawn p : playerPawns){
+								if((destination - pawn.getLocation() +60)%60 < (destination - p.getLocation() + 60)%60){
+									board.makeMove(card, p.getID(), p.getLocation(), destination);
+								}
+							}
 							break;
 						default:
 							// if a move does not result in a bump ]
